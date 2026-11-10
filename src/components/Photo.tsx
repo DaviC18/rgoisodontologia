@@ -9,6 +9,9 @@ type Props = {
   alt: string;
   width: number;
   height: number;
+  /** srcset/sizes aplicados só à primeira fonte */
+  srcSet?: string;
+  sizes?: string;
   /** imagem do LCP (hero): carrega com prioridade, sem lazy */
   priority?: boolean;
   className?: string;
@@ -21,6 +24,8 @@ export function Photo({
   alt,
   width,
   height,
+  srcSet,
+  sizes,
   priority,
   className,
   imgClassName,
@@ -34,6 +39,8 @@ export function Photo({
         <img
           key={src}
           src={src}
+          srcSet={i === 0 ? srcSet : undefined}
+          sizes={i === 0 ? sizes : undefined}
           alt={alt}
           width={width}
           height={height}

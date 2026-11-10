@@ -104,9 +104,16 @@ export const hero = {
     "Ambiente climatizado",
     "Nota 5,0 no Google",
   ],
-  // Ordem de preferência: a primeira que existir em public/ é usada (e recebe preload no build).
-  // TODO_CLINICA: foto real da família no consultório (`familia-hero.webp`)
-  fotos: ["/images/familia-hero.webp", "/images/rogerio.webp"],
+  // Recebe preload no build. Original em design/banner-original.png.
+  foto: {
+    src: "/images/hero-banner-768.webp",
+    srcSet:
+      "/images/hero-banner-480.webp 480w, /images/hero-banner-768.webp 768w",
+    sizes: "(min-width: 1024px) 520px, min(calc(100vw - 40px), 448px)",
+    width: 768,
+    height: 1185,
+    alt: "Letreiro dourado da RGóis Odontologia na parede azul do consultório",
+  },
 };
 
 export const checkup = {
@@ -385,7 +392,6 @@ export const ui = {
   notaAria: "Nota 5 de 5",
   fabAria: "Agendar pelo WhatsApp",
   fotoEmBreve: "Foto em breve",
-  altHero: "Dr. Rogério Góis no consultório RGóis", // trocar quando chegar a foto da família
   instagram: "Instagram",
   whatsapp: "WhatsApp",
   responsavelTecnico: "Responsável técnico",

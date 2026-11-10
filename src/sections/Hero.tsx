@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { hero, numeros, ui } from "@/content/site";
+import { hero, numeros } from "@/content/site";
 import { CountUp } from "@/components/CountUp";
 import { MagneticButton } from "@/components/MagneticButton";
 import { Photo } from "@/components/Photo";
@@ -159,12 +159,15 @@ export function Hero() {
           />
           <div data-hero="foto" className="relative">
             <Photo
-              srcs={hero.fotos}
-              alt={ui.altHero}
-              width={960}
-              height={1200}
+              srcs={[hero.foto.src]}
+              srcSet={hero.foto.srcSet}
+              sizes={hero.foto.sizes}
+              alt={hero.foto.alt}
+              width={hero.foto.width}
+              height={hero.foto.height}
               priority
               className="aspect-[4/5] max-h-[60svh] w-full rounded-t-full lg:max-h-none"
+              imgClassName="object-[50%_45%]"
             />
           </div>
         </div>

@@ -85,7 +85,9 @@ function seoPlugin(): Plugin {
         attrs: { [attr]: key, content },
         injectTo: "head",
       });
-      const heroFoto = hero.fotos.find((f) => existsSync(`${publicDir}${f}`));
+      const heroFoto = existsSync(`${publicDir}${hero.foto.src}`)
+        ? hero.foto
+        : null;
       const ogImage = abs(seo.ogImage);
 
       const tags: HtmlTagDescriptor[] = [
@@ -136,7 +138,9 @@ function seoPlugin(): Plugin {
           attrs: {
             rel: "preload",
             as: "image",
-            href: heroFoto,
+            href: heroFoto.src,
+            imagesrcset: heroFoto.srcSet,
+            imagesizes: heroFoto.sizes,
             fetchpriority: "high",
             type: "image/webp",
           },

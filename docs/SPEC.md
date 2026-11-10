@@ -101,7 +101,7 @@ Ordem fixa. Cada seção é um componente em `src/sections/`, com `id` igual à 
 - Layout de 2 colunas a partir de 1024px: texto à esquerda e, à direita, a foto da família num recorte em arco (`rounded-t-full`) com moldura dourada fina deslocada.
 - No mobile, a foto vai abaixo do texto, com altura de no máximo 60svh.
 - Abaixo dos CTAs: os 3 `selos` como chips e a faixa `numeros` com `CountUp`.
-- **Foto:** usar `/images/familia-hero.webp`. Enquanto não existir, usar `/images/rogerio.webp` e deixar `TODO` no código.
+- **Foto:** `hero.foto` em `site.ts` (hoje o letreiro: `/images/hero-banner-{480,768}.webp`, original em `design/banner-original.png`), com `srcset` e preload gerado no build. Se a foto da família chegar, trocar só o `hero.foto`.
 
 **Checkup:** à esquerda, o título e o subtítulo com selo "Programa exclusivo". À direita, os 4 `itens` como lista numerada com linha dourada vertical que se desenha no scroll. O item "Kit Premium" ganha destaque visual (card navy com ícone de presente). O CTA vem logo abaixo, grande.
 
@@ -194,7 +194,8 @@ Pasta `public/images/`. Nomes fixos (os componentes já apontam para eles):
 | Arquivo | Origem | Status |
 |---|---|---|
 | `logo.webp`, `logo-mask.webp` | Gerados de `design/logo-original.jpg` (enviado pela clínica, dourado sobre preto): `logo.webp` é colorido com fundo transparente (usar sobre navy); `logo-mask.webp` é só alfa, usado como `mask-image` para pintar o logo com qualquer cor (gold-700 sobre creme). Componente `Logo` | **ok** (vetor `logo.svg` ainda desejável, não bloqueia) |
-| `familia-hero.webp` | Foto real da família no consultório | **pendente**: pedir à clínica |
+| `hero-banner-480.webp`, `hero-banner-768.webp` | Letreiro da clínica (`design/banner-original.png`) | **ok** (em uso no hero) |
+| `familia-hero.webp` | Foto real da família no consultório | **pendente**: opcional, pode substituir o banner |
 | `rogerio.webp`, `rachel.webp`, `renata.webp` | Fotos do site Canva atual / Instagram | baixar do site atual |
 | `consultorio-1..3.webp` | Fotos do consultório no site Canva atual | baixar do site atual |
 | `og-image.jpg` (em `public/`) | 1200×630 gerado com logo, eyebrow, slogan e telefone de `site.ts` | **ok** (refazer com foto quando `familia-hero.webp` chegar) |
