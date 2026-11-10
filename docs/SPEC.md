@@ -154,6 +154,7 @@ Ordem fixa. Cada seção é um componente em `src/sections/`, com `id` igual à 
 | `WhatsAppButton` | `<a>` com `href` de `whatsappLink(msg)`, `target="_blank"`, `rel="noopener"`, ícone, tracking e variantes `primary`, `ghost` e `light` | — |
 | `SectionHeader` | eyebrow + h2 (`SplitHeading`) + subtítulo opcional, alinhamento configurável | — |
 | `StarRating` | 5 estrelas douradas (SVG) com `aria-label="Nota 5 de 5"` | — |
+| `Logo` | Logo oficial. `variant="color"` (`logo.webp`, para fundo navy) ou `"mask"` (`logo-mask.webp` + `currentColor`, para fundo claro). `alt` = `clinica.nome` | — |
 
 **Regras de animação (GSAP):**
 - Registrar plugins uma vez em `src/lib/gsap.ts` e importar de lá.
@@ -192,7 +193,7 @@ Pasta `public/images/`. Nomes fixos (os componentes já apontam para eles):
 
 | Arquivo | Origem | Status |
 |---|---|---|
-| `logo.svg` | Vetorizar o logo "RGóis Odontologia" ou receber da clínica | **pendente** (usar logotipo em texto Fraunces itálico dourado como fallback) |
+| `logo.webp`, `logo-mask.webp` | Gerados de `design/logo-original.jpg` (enviado pela clínica, dourado sobre preto): `logo.webp` é colorido com fundo transparente (usar sobre navy); `logo-mask.webp` é só alfa, usado como `mask-image` para pintar o logo com qualquer cor (gold-700 sobre creme). Componente `Logo` | **ok** (vetor `logo.svg` ainda desejável, não bloqueia) |
 | `familia-hero.webp` | Foto real da família no consultório | **pendente**: pedir à clínica |
 | `rogerio.webp`, `rachel.webp`, `renata.webp` | Fotos do site Canva atual / Instagram | baixar do site atual |
 | `consultorio-1..3.webp` | Fotos do consultório no site Canva atual | baixar do site atual |
@@ -215,7 +216,7 @@ Enquanto um asset estiver pendente, usar placeholder neutro (bloco creme-100 com
 2. Lista final de tratamentos (implante? ortodontia? canal? infantil?)
 3. Conteúdo oficial do Check-up Inteligente e do Kit Premium
 4. História completa do Dr. Rogério ("da periferia de SP a cirurgião-dentista")
-5. Foto real da família para o hero + logo em vetor
+5. Foto real da família para o hero (logo raster já recebido; vetor opcional)
 6. Domínio (ex.: `rgoisodontologia.com.br`)
 7. Autorização para exibir o primeiro nome dos autores dos depoimentos
 
