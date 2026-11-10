@@ -9,9 +9,19 @@ const STAR =
 /** 5 estrelas douradas. Lido como uma imagem só ("Nota 5 de 5"). */
 export function StarRating({ className, starClassName }: Props) {
   return (
-    <span role="img" aria-label={ui.notaAria} className={cn("inline-flex gap-1 text-gold-500", className)}>
+    <span
+      role="img"
+      aria-label={ui.notaAria}
+      className={cn("inline-flex gap-1 text-gold-500", className)}
+    >
       {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} viewBox="0 0 24 24" aria-hidden="true" focusable="false" className={cn("size-5", starClassName)}>
+        <svg
+          key={i}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+          className={cn("size-5", starClassName)}
+        >
           <path d={STAR} fill="currentColor" />
         </svg>
       ))}

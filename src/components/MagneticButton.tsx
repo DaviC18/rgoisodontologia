@@ -23,8 +23,14 @@ export function MagneticButton({ children, strength = 0.3, className }: Props) {
       const mm = gsap.matchMedia();
 
       mm.add(`${MQ.finePointer} and ${MQ.motion}`, () => {
-        const xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3.out" });
-        const yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3.out" });
+        const xTo = gsap.quickTo(el, "x", {
+          duration: 0.5,
+          ease: "power3.out",
+        });
+        const yTo = gsap.quickTo(el, "y", {
+          duration: 0.5,
+          ease: "power3.out",
+        });
         const move = (e: PointerEvent) => {
           const r = el.getBoundingClientRect();
           xTo((e.clientX - (r.left + r.width / 2)) * strength);
@@ -46,7 +52,10 @@ export function MagneticButton({ children, strength = 0.3, className }: Props) {
   );
 
   return (
-    <span ref={ref} className={cn("inline-block will-change-transform", className)}>
+    <span
+      ref={ref}
+      className={cn("inline-block will-change-transform", className)}
+    >
       {children}
     </span>
   );

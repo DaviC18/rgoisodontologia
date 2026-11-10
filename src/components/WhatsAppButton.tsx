@@ -10,7 +10,8 @@ type Props = {
   /** id da seção de onde veio o clique (evento `cta_whatsapp`) */
   origem: string;
   children: ReactNode;
-  variant?: "primary" | "ghost" | "light";
+  /** `link`: texto com sublinhado no hover, sem fundo (ignora `size`) */
+  variant?: "primary" | "ghost" | "light" | "link";
   size?: "sm" | "md" | "lg";
   icon?: boolean;
   className?: string;
@@ -18,8 +19,10 @@ type Props = {
 
 const VARIANTS = {
   primary: "bg-navy-950 text-cream-50 hover:bg-navy-700 [&_svg]:text-gold-300",
-  ghost: "border border-navy-950/20 text-navy-950 hover:border-gold-500 hover:bg-cream-100 [&_svg]:text-gold-700",
+  ghost:
+    "border border-navy-950/20 text-navy-950 hover:border-gold-500 hover:bg-cream-100 [&_svg]:text-gold-700",
   light: "bg-cream-50 text-navy-950 hover:bg-gold-300 [&_svg]:text-gold-700",
+  link: "min-h-11 text-gold-700 underline-offset-4 hover:underline",
 } as const;
 
 const SIZES = {
@@ -45,13 +48,20 @@ export function WhatsAppButton({
       rel="noopener"
       onClick={() => track("cta_whatsapp", { origem })}
       className={cn(
-        "inline-flex items-center justify-center gap-2.5 rounded-full font-semibold transition-colors duration-300",
+        "inline-flex items-center justify-center gap-2.5 font-semibold transition-colors duration-300",
+        variant !== "link" && "rounded-full",
         VARIANTS[variant],
-        SIZES[size],
+        variant !== "link" && SIZES[size],
         className,
       )}
     >
-      {icon && <MessageCircle aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.75} />}
+      {icon && (
+        <MessageCircle
+          aria-hidden="true"
+          className="size-5 shrink-0"
+          strokeWidth={1.75}
+        />
+      )}
       <span>{children}</span>
       <span className="sr-only"> {ui.abreEmNovaAba}</span>
     </a>

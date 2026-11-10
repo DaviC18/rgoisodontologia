@@ -12,10 +12,15 @@ import App from "./App.tsx";
  * Removido pelo integrador na Fase 3.
  */
 function resolveRoot(): ComponentType {
-  const demo = import.meta.env.DEV && new URLSearchParams(location.search).get("demo");
+  const demo =
+    import.meta.env.DEV && new URLSearchParams(location.search).get("demo");
   if (!demo) return App;
-  const demos = import.meta.glob<{ default: ComponentType }>("./**/_demo-*.tsx");
-  const entry = Object.entries(demos).find(([path]) => path.endsWith(`/_demo-${demo}.tsx`));
+  const demos = import.meta.glob<{ default: ComponentType }>(
+    "./**/_demo-*.tsx",
+  );
+  const entry = Object.entries(demos).find(([path]) =>
+    path.endsWith(`/_demo-${demo}.tsx`),
+  );
   if (!entry) return App;
   const Demo = lazy(entry[1]);
   return () => (

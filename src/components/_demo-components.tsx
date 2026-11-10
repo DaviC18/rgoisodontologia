@@ -3,7 +3,16 @@
  * Não é importado no App; o integrador remove na Fase 3.
  */
 import { Gift } from "lucide-react";
-import { checkup, depoimentos, hero, historia, MSG, numeros, tratamentos, ui } from "@/content/site";
+import {
+  checkup,
+  depoimentos,
+  hero,
+  historia,
+  MSG,
+  numeros,
+  tratamentos,
+  ui,
+} from "@/content/site";
 import { CountUp } from "./CountUp";
 import { GoldLine } from "./GoldLine";
 import { Grain } from "./Grain";
@@ -19,7 +28,9 @@ import { ToothMark } from "./ToothMark";
 import { WhatsAppButton } from "./WhatsAppButton";
 
 const Label = ({ children }: { children: string }) => (
-  <p className="mb-4 font-mono text-xs tracking-wider text-ink-600 uppercase">{children}</p>
+  <p className="mb-4 font-mono text-xs tracking-wider text-ink-600 uppercase">
+    {children}
+  </p>
 );
 
 export default function DemoComponents() {
@@ -56,7 +67,12 @@ export default function DemoComponents() {
               {hero.ctaPrimario.texto}
             </WhatsAppButton>
           </MagneticButton>
-          <WhatsAppButton msg={MSG.avaliacao} origem="demo" variant="ghost" size="sm">
+          <WhatsAppButton
+            msg={MSG.avaliacao}
+            origem="demo"
+            variant="ghost"
+            size="sm"
+          >
             {ui.agendar}
           </WhatsAppButton>
         </div>
@@ -83,8 +99,16 @@ export default function DemoComponents() {
 
       <section className="container-site">
         <Label>SectionHeader + Reveal (stagger) + SpotlightCard</Label>
-        <SectionHeader id="demo-trat" eyebrow={checkup.eyebrow} titulo={checkup.titulo} subtitulo={checkup.subtitulo} />
-        <Reveal stagger={0.1} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeader
+          id="demo-trat"
+          eyebrow={checkup.eyebrow}
+          titulo={checkup.titulo}
+          subtitulo={checkup.subtitulo}
+        />
+        <Reveal
+          stagger={0.1}
+          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {tratamentos.map((t) => (
             <SpotlightCard key={t.id} className="p-8">
               <h3 className="text-xl text-navy-950">{t.nome}</h3>
@@ -110,7 +134,13 @@ export default function DemoComponents() {
       <section className="relative isolate bg-navy-950 py-24">
         <Grain />
         <div className="container-site">
-          <SectionHeader id="demo-hist" tone="dark" eyebrow={historia.eyebrow} titulo={historia.titulo} subtitulo={historia.resumo} />
+          <SectionHeader
+            id="demo-hist"
+            tone="dark"
+            eyebrow={historia.eyebrow}
+            titulo={historia.titulo}
+            subtitulo={historia.resumo}
+          />
         </div>
       </section>
 
@@ -122,9 +152,14 @@ export default function DemoComponents() {
           {(["left", "right"] as const).map((dir) => (
             <Marquee key={dir} direction={dir} staticClassName="container-site">
               {depoimentos.itens.map((d) => (
-                <figure key={d.texto} className="w-80 shrink-0 rounded-card border border-sand-200 bg-cream-100 p-6">
+                <figure
+                  key={d.texto}
+                  className="w-80 shrink-0 rounded-card border border-sand-200 bg-cream-100 p-6"
+                >
                   <blockquote className="text-ink-900">{d.texto}</blockquote>
-                  <figcaption className="mt-3 text-sm text-ink-600">{d.autor}</figcaption>
+                  <figcaption className="mt-3 text-sm text-ink-600">
+                    {d.autor}
+                  </figcaption>
                 </figure>
               ))}
             </Marquee>

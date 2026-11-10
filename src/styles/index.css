@@ -50,6 +50,11 @@
     border-radius: 4px;
   }
 
+  /* seções focadas via âncora não ganham contorno */
+  section[tabindex="-1"]:focus {
+    outline: none;
+  }
+
   img,
   svg,
   video {
@@ -112,5 +117,26 @@ html.js [data-reveal] {
     clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
+  }
+}
+
+/* Pulso do WhatsAppFab a cada 6s (some com reduced-motion) */
+@keyframes fab-pulse {
+  0%,
+  80% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fab-pulse {
+    animation: fab-pulse 6s var(--ease-out-soft) infinite;
   }
 }

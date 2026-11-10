@@ -18,7 +18,13 @@ type Props = {
  * Faixa infinita. Os filhos são renderizados duas vezes; a cópia é `aria-hidden` + `inert`.
  * Pausa no hover e quando algo dentro recebe foco. Com reduced-motion vira grid estático.
  */
-export function Marquee({ children, direction = "left", duration = 40, className, staticClassName }: Props) {
+export function Marquee({
+  children,
+  direction = "left",
+  duration = 40,
+  className,
+  staticClassName,
+}: Props) {
   const reduced = useReducedMotion();
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
@@ -32,7 +38,11 @@ export function Marquee({ children, direction = "left", duration = 40, className
 
       mm.add(MQ.motion, () => {
         const [from, to] = direction === "left" ? [0, -50] : [-50, 0];
-        const tween = gsap.fromTo(t, { xPercent: from }, { xPercent: to, duration, ease: "none", repeat: -1 });
+        const tween = gsap.fromTo(
+          t,
+          { xPercent: from },
+          { xPercent: to, duration, ease: "none", repeat: -1 },
+        );
         const pause = () => tween.pause();
         const play = () => tween.play();
         el.addEventListener("pointerenter", pause);
@@ -47,11 +57,24 @@ export function Marquee({ children, direction = "left", duration = 40, className
         };
       });
     },
-    { scope: root, dependencies: [reduced, direction, duration], revertOnUpdate: true },
+    {
+      scope: root,
+      dependencies: [reduced, direction, duration],
+      revertOnUpdate: true,
+    },
   );
 
   if (reduced) {
-    return <div className={cn("grid gap-6 sm:grid-cols-2 lg:grid-cols-3", staticClassName)}>{children}</div>;
+    return (
+      <div
+        className={cn(
+          "grid gap-6 sm:grid-cols-2 lg:grid-cols-3",
+          staticClassName,
+        )}
+      >
+        {children}
+      </div>
+    );
   }
 
   return (

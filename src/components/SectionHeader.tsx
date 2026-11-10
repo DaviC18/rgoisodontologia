@@ -28,11 +28,17 @@ export function SectionHeader({
 }: Props) {
   const dark = tone === "dark";
   return (
-    <header className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
+    <header
+      className={cn(
+        "max-w-3xl",
+        align === "center" && "mx-auto text-center",
+        className,
+      )}
+    >
       {eyebrow && (
         <p
           className={cn(
-            "mb-4 text-[0.8125rem] font-semibold uppercase tracking-[0.2em]",
+            "mb-4 text-[0.8125rem] font-semibold tracking-[0.2em] uppercase",
             dark ? "text-gold-300" : "text-gold-700",
           )}
         >

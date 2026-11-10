@@ -18,7 +18,14 @@ type Props = {
  * Fade + subida ao entrar na viewport (uma vez).
  * Sem JS ou com reduced-motion, o conteúdo fica visível (ver `[data-reveal]` no CSS).
  */
-export function Reveal({ children, as: Tag = "div", className, delay = 0, stagger, y = 24 }: Props) {
+export function Reveal({
+  children,
+  as: Tag = "div",
+  className,
+  delay = 0,
+  stagger,
+  y = 24,
+}: Props) {
   const ref = useRef<HTMLElement>(null);
 
   useGSAP(

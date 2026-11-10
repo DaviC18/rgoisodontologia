@@ -16,7 +16,8 @@ export const whatsappLink = (msg: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 export const MSG = {
-  checkup: "Olá! Quero agendar um Check-up Inteligente e garantir meu Kit Premium!",
+  checkup:
+    "Olá! Quero agendar um Check-up Inteligente e garantir meu Kit Premium!",
   avaliacao: "Olá! Vim pelo site e gostaria de agendar uma avaliação.",
   tratamento: (nome: string) =>
     `Olá! Vim pelo site e gostaria de saber mais sobre ${nome}.`,
@@ -53,7 +54,11 @@ export const clinica = {
   // Formato schema.org para o JSON-LD
   openingHoursSpec: [
     { dayOfWeek: ["Monday"], opens: "15:00", closes: "19:00" },
-    { dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "19:00" },
+    {
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "19:00",
+    },
     { dayOfWeek: ["Saturday"], opens: "09:00", closes: "12:00" },
   ],
   instagram: "https://www.instagram.com/rgoisodontologia/",
@@ -76,7 +81,14 @@ export const seo = {
 
 export const numeros = [
   { valor: 40, prefixo: "+", sufixo: "", rotulo: "anos lapidando sorrisos" },
-  { valor: 5.0, prefixo: "", sufixo: "", decimais: 1, rotulo: "nota no Google", icone: "estrela" },
+  {
+    valor: 5.0,
+    prefixo: "",
+    sufixo: "",
+    decimais: 1,
+    rotulo: "nota no Google",
+    icone: "estrela",
+  },
   { valor: 4, prefixo: "", sufixo: "", rotulo: "anos cuidando da Colônia" },
 ];
 
@@ -87,7 +99,11 @@ export const hero = {
     "Tratamentos que devolvem saúde e confiança ao seu sorriso, com calma, explicação de cada etapa e sem tratamentos desnecessários.",
   ctaPrimario: { texto: "Agendar pelo WhatsApp", msg: MSG.avaliacao },
   ctaSecundario: { texto: "Conheça o Check-up Inteligente", href: "#checkup" },
-  selos: ["Atendimento humanizado", "Ambiente climatizado", "Nota 5,0 no Google"],
+  selos: [
+    "Atendimento humanizado",
+    "Ambiente climatizado",
+    "Nota 5,0 no Google",
+  ],
 };
 
 export const checkup = {
@@ -97,22 +113,74 @@ export const checkup = {
     "Nosso programa de prevenção e manutenção do sorriso. Porque os problemas mais difíceis de tratar quase sempre começam pequenos.",
   // Itens inferidos do conteúdo publicado pela clínica; detalhes oficiais pendentes.
   itens: [
-    { titulo: "Avaliação completa", texto: "Olhar atento para dentes, gengiva e mordida, para identificar problemas cedo." },
-    { titulo: "Profilaxia de verdade", texto: "Não é uma \"limpezinha\": é remover o que precisa, orientar e acompanhar." },
-    { titulo: "Plano honesto", texto: "Você entende o que precisa, o que pode esperar e o que não precisa fazer." },
-    { titulo: "Kit Premium", texto: "Ao agendar seu check-up, você garante o seu Kit Premium de cuidados." },
+    {
+      titulo: "Avaliação completa",
+      texto:
+        "Olhar atento para dentes, gengiva e mordida, para identificar problemas cedo.",
+    },
+    {
+      titulo: "Profilaxia de verdade",
+      texto:
+        'Não é uma "limpezinha": é remover o que precisa, orientar e acompanhar.',
+    },
+    {
+      titulo: "Plano honesto",
+      texto:
+        "Você entende o que precisa, o que pode esperar e o que não precisa fazer.",
+    },
+    {
+      titulo: "Kit Premium",
+      texto:
+        "Ao agendar seu check-up, você garante o seu Kit Premium de cuidados.",
+    },
   ],
   cta: { texto: "Quero meu Check-up + Kit Premium", msg: MSG.checkup },
   pendente: true, // conteúdo do Kit e do programa a confirmar com a clínica
 };
 
 export const tratamentos = [
-  { id: "avaliacao", nome: "Avaliação odontológica", texto: "O primeiro passo de qualquer tratamento: entender a necessidade de cada sorriso.", icone: "stethoscope" },
-  { id: "profilaxia", nome: "Limpeza e prevenção", texto: "Profilaxia cuidadosa para evitar tratamentos mais complexos e caros no futuro.", icone: "sparkles" },
-  { id: "proteses", nome: "Próteses dentárias", texto: "Experiência de quem também é técnico em prótese: ajuste preciso e conforto para mastigar e sorrir.", icone: "smile" },
-  { id: "clareamento", nome: "Clareamento dental", texto: "Avaliamos se o clareamento é indicado para você e conduzimos com segurança.", icone: "sun" },
-  { id: "estetica", nome: "Odontologia estética", texto: "Mais confiança para sorrir, conversar, tirar fotos e voltar a se sentir bem.", icone: "gem" },
-  { id: "extracoes", nome: "Extrações", texto: "Quando necessário, com calma, explicação de cada etapa e respeito ao seu ritmo.", icone: "shield" },
+  {
+    id: "avaliacao",
+    nome: "Avaliação odontológica",
+    texto:
+      "O primeiro passo de qualquer tratamento: entender a necessidade de cada sorriso.",
+    icone: "stethoscope",
+  },
+  {
+    id: "profilaxia",
+    nome: "Limpeza e prevenção",
+    texto:
+      "Profilaxia cuidadosa para evitar tratamentos mais complexos e caros no futuro.",
+    icone: "sparkles",
+  },
+  {
+    id: "proteses",
+    nome: "Próteses dentárias",
+    texto:
+      "Experiência de quem também é técnico em prótese: ajuste preciso e conforto para mastigar e sorrir.",
+    icone: "smile",
+  },
+  {
+    id: "clareamento",
+    nome: "Clareamento dental",
+    texto:
+      "Avaliamos se o clareamento é indicado para você e conduzimos com segurança.",
+    icone: "sun",
+  },
+  {
+    id: "estetica",
+    nome: "Odontologia estética",
+    texto:
+      "Mais confiança para sorrir, conversar, tirar fotos e voltar a se sentir bem.",
+    icone: "gem",
+  },
+  {
+    id: "extracoes",
+    nome: "Extrações",
+    texto:
+      "Quando necessário, com calma, explicação de cada etapa e respeito ao seu ritmo.",
+    icone: "shield",
+  },
   // Possíveis serviços extras a confirmar (NÃO renderizar até confirmação):
   // implantes, ortodontia, endodontia (canal), odontopediatria
 ];
@@ -133,7 +201,7 @@ export const historia = {
   carta: [
     "Quando começamos essa jornada, nosso maior sonho era oferecer um atendimento odontológico que fosse além da técnica: queríamos criar um espaço onde cada paciente se sentisse acolhido e valorizado.",
     "Hoje, olhando para trás, vemos que construímos algo ainda maior do que imaginamos. Aqui é nossa família cuidando da sua!",
-    "Nossa meta não é bater meta, nem \"vender\" tratamentos agressivos e desnecessários. Nossa meta é ter pacientes satisfeitos e tranquilos, sabendo que sempre vamos oferecer o melhor para cada caso. Cada paciente é único.",
+    'Nossa meta não é bater meta, nem "vender" tratamentos agressivos e desnecessários. Nossa meta é ter pacientes satisfeitos e tranquilos, sabendo que sempre vamos oferecer o melhor para cada caso. Cada paciente é único.',
     "Esperamos que você se sinta em casa e venha fazer parte da nossa família. Afinal, cada sorriso que cuidamos é uma parte dessa história.",
   ],
   destaqueCarta: "Nossa meta não é bater meta.",
@@ -178,15 +246,18 @@ export const filosofia = {
   pilares: [
     {
       titulo: "Acolher",
-      texto: "Do café servido na recepção à conversa atenta sobre suas expectativas. Cada detalhe faz diferença.",
+      texto:
+        "Do café servido na recepção à conversa atenta sobre suas expectativas. Cada detalhe faz diferença.",
     },
     {
       titulo: "Tratar",
-      texto: "Com calma, no seu ritmo, explicando cada procedimento. Qualidade não é luxo, é o mínimo que oferecemos.",
+      texto:
+        "Com calma, no seu ritmo, explicando cada procedimento. Qualidade não é luxo, é o mínimo que oferecemos.",
     },
     {
       titulo: "Transformar",
-      texto: "Fazer da ida ao dentista uma experiência positiva, sem medo e sem desconforto. Aqui, cada paciente é tratado como rei ou rainha.",
+      texto:
+        "Fazer da ida ao dentista uma experiência positiva, sem medo e sem desconforto. Aqui, cada paciente é tratado como rei ou rainha.",
     },
   ],
 };
@@ -194,10 +265,17 @@ export const filosofia = {
 export const consultorio = {
   eyebrow: "O consultório",
   titulo: "Um espaço pensado para você se sentir em casa",
-  texto: "Ambiente climatizado, limpo e acolhedor, com aquele café expresso esperando por você.",
+  texto:
+    "Ambiente climatizado, limpo e acolhedor, com aquele café expresso esperando por você.",
   fotos: [
-    { src: "/images/consultorio-1.webp", alt: "Cadeira odontológica e parede verde do consultório RGóis" },
-    { src: "/images/consultorio-2.webp", alt: "Sala de atendimento iluminada do consultório RGóis" },
+    {
+      src: "/images/consultorio-1.webp",
+      alt: "Cadeira odontológica e parede verde do consultório RGóis",
+    },
+    {
+      src: "/images/consultorio-2.webp",
+      alt: "Sala de atendimento iluminada do consultório RGóis",
+    },
     { src: "/images/consultorio-3.webp", alt: "Detalhe do consultório RGóis" },
   ],
 };
@@ -221,15 +299,18 @@ export const depoimentos = {
       autor: "Paciente via Google",
     },
     {
-      texto: "Melhor atendimento que já tive. Super atencioso e explica todo procedimento, sem contar que o ambiente é top.",
+      texto:
+        "Melhor atendimento que já tive. Super atencioso e explica todo procedimento, sem contar que o ambiente é top.",
       autor: "Paciente via Google",
     },
     {
-      texto: "Excelente atendimento, desde a entrada com aquele expresso esperto até a finalização do tratamento! Profissionais de primeira qualidade.",
+      texto:
+        "Excelente atendimento, desde a entrada com aquele expresso esperto até a finalização do tratamento! Profissionais de primeira qualidade.",
       autor: "Paciente via Google",
     },
     {
-      texto: "Consultório excelente! Ótimo atendimento! Me senti muito acolhida! Estão de parabéns!",
+      texto:
+        "Consultório excelente! Ótimo atendimento! Me senti muito acolhida! Estão de parabéns!",
       autor: "Paciente via Google",
     },
   ],
@@ -307,4 +388,9 @@ export const ui = {
   responsavelTecnico: "Responsável técnico",
   direitos: (ano: number) => `© ${ano} RGóis Odontologia`,
   abreEmNovaAba: "(abre em nova aba)",
+  navAria: "Navegação principal",
+  irPara: (nome: string) => `Ver ${nome}`,
+  cep: "CEP",
+  telefone: "Telefone e WhatsApp",
+  endereco: "Endereço",
 };

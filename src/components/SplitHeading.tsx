@@ -16,7 +16,11 @@ type Props = {
   highlightClassName?: string;
 };
 
-function renderText(text: string, highlight: string | undefined, highlightClassName?: string) {
+function renderText(
+  text: string,
+  highlight: string | undefined,
+  highlightClassName?: string,
+) {
   const lines = text.split("\n");
   return lines.map((line, i) => {
     const idx = highlight ? line.indexOf(highlight) : -1;

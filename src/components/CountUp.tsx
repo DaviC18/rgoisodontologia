@@ -11,14 +11,23 @@ type Props = {
 };
 
 const format = (n: number, decimais: number) =>
-  new Intl.NumberFormat("pt-BR", { minimumFractionDigits: decimais, maximumFractionDigits: decimais }).format(n);
+  new Intl.NumberFormat("pt-BR", {
+    minimumFractionDigits: decimais,
+    maximumFractionDigits: decimais,
+  }).format(n);
 
 /**
  * Conta de 0 até `valor` ao entrar na viewport, em formato pt-BR.
  * O HTML já nasce com o valor final (sem JS / reduced-motion mostra o número certo);
  * leitores de tela leem só o valor final.
  */
-export function CountUp({ valor, decimais = 0, prefixo = "", sufixo = "", className }: Props) {
+export function CountUp({
+  valor,
+  decimais = 0,
+  prefixo = "",
+  sufixo = "",
+  className,
+}: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const finalText = `${prefixo}${format(valor, decimais)}${sufixo}`;
 
@@ -39,7 +48,7 @@ export function CountUp({ valor, decimais = 0, prefixo = "", sufixo = "", classN
           duration: 1.6,
           ease: "power2.out",
           onUpdate: render,
-          scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          scrollTrigger: { trigger: el, start: "top bottom", once: true },
         });
         return () => {
           el.textContent = finalText;
