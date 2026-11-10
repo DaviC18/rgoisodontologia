@@ -197,7 +197,8 @@ Pasta `public/images/`. Nomes fixos (os componentes já apontam para eles):
 | `familia-hero.webp` | Foto real da família no consultório | **pendente**: pedir à clínica |
 | `rogerio.webp`, `rachel.webp`, `renata.webp` | Fotos do site Canva atual / Instagram | baixar do site atual |
 | `consultorio-1..3.webp` | Fotos do consultório no site Canva atual | baixar do site atual |
-| `og-image.jpg` | Gerar 1200×630 | criar |
+| `og-image.jpg` (em `public/`) | 1200×630 gerado com logo, eyebrow, slogan e telefone de `site.ts` | **ok** (refazer com foto quando `familia-hero.webp` chegar) |
+| `favicon.svg`, `favicon.ico`, `apple-touch-icon.png` (em `public/`) | "R" isolado de `design/logo-original.jpg`, dourado sobre navy | **ok** |
 
 Enquanto um asset estiver pendente, usar placeholder neutro (bloco creme-100 com `ToothMark` e texto "Foto em breve"). **Nunca** usar foto de banco com pessoas: o site atual tem esse problema e ele é justamente uma das coisas a corrigir.
 

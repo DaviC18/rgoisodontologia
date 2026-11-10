@@ -9,9 +9,6 @@ import { ToothMark } from "@/components/ToothMark";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { gsap, MQ, useGSAP } from "@/lib/gsap";
 
-// TODO_CLINICA: trocar pela foto real da família (`/images/familia-hero.webp`). Enquanto não existir, cai na do Dr. Rogério.
-const HERO_SRCS = ["/images/familia-hero.webp", "/images/rogerio.webp"];
-
 /** Trecho do título em itálico dourado: a segunda linha ("cuidando da sua."). */
 const destaque = hero.titulo.split("\n")[1];
 
@@ -162,7 +159,7 @@ export function Hero() {
           />
           <div data-hero="foto" className="relative">
             <Photo
-              srcs={HERO_SRCS}
+              srcs={hero.fotos}
               alt={ui.altHero}
               width={960}
               height={1200}

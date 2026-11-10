@@ -104,6 +104,9 @@ export const hero = {
     "Ambiente climatizado",
     "Nota 5,0 no Google",
   ],
+  // Ordem de preferência: a primeira que existir em public/ é usada (e recebe preload no build).
+  // TODO_CLINICA: foto real da família no consultório (`familia-hero.webp`)
+  fotos: ["/images/familia-hero.webp", "/images/rogerio.webp"],
 };
 
 export const checkup = {
