@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* Tokens: SPEC §4 */
+@theme {
+  --color-navy-950: #0b1424; /* fundos escuros (hero alternativo, rodapé, seção história) */
+  --color-navy-900: #111d33;
+  --color-navy-700: #24365a;
+  --color-gold-500: #c9a24b; /* destaque principal, linhas, ícones */
+  --color-gold-300: #e3c988;
+  --color-gold-700: #9c7a2e; /* texto dourado sobre fundo claro (contraste AA) */
+  --color-cream-50: #fbf8f3; /* fundo base */
+  --color-cream-100: #f4eee4;
+  --color-sand-200: #e8dfd0; /* bordas, divisores */
+  --color-ink-900: #1a1a1f; /* texto principal */
+  --color-ink-600: #55565e; /* texto secundário */
+  --color-whatsapp: #25d366;
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-ink-900 antialiased;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    @apply bg-gold-300 text-navy-950;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+}
+
+/* Lenis: recomendado pela lib */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Reveal: só esconde quando o JS rodou; com reduced-motion fica sempre visível */
+html.js [data-reveal] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  @media (width >= 48rem) {
+    padding-inline: 32px;
+  }
+}
+
+/* Grão sutil para seções navy (SVG noise ~3–4%) */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
