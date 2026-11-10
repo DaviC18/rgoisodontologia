@@ -139,11 +139,11 @@ export function Hero() {
                     sufixo={n.sufixo}
                     className="font-display text-[clamp(2rem,4vw,2.75rem)] leading-none text-navy-950"
                   />
+                  {/* wrapper: o StarRating já tem inline-flex, que anularia o `hidden` */}
                   {n.icone === "estrela" && (
-                    <StarRating
-                      className="hidden sm:inline-flex"
-                      starClassName="size-3.5"
-                    />
+                    <span className="hidden sm:inline-flex">
+                      <StarRating starClassName="size-3.5" />
+                    </span>
                   )}
                 </dd>
               </div>

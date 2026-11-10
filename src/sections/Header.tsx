@@ -104,72 +104,75 @@ export function Header() {
   const solid = scrolled || open;
 
   return (
-    <header
-      ref={root}
-      data-site-header=""
-      className={cn(
-        "fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500",
-        solid
-          ? "bg-cream-50/85 shadow-[0_1px_0_var(--color-sand-200)] backdrop-blur-md"
-          : "bg-transparent",
-      )}
-    >
-      <a
-        href="#conteudo"
-        className="sr-only-focusable absolute top-2 left-2 z-50 rounded-full bg-navy-950 px-4 py-3 text-sm font-semibold text-cream-50"
+    <>
+      <header
+        ref={root}
+        data-site-header=""
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-500",
+          solid
+            ? "bg-cream-50/85 shadow-[0_1px_0_var(--color-sand-200)] backdrop-blur-md"
+            : "bg-transparent",
+        )}
       >
-        {ui.pularConteudo}
-      </a>
-
-      <div className="container-site flex h-16 items-center justify-between gap-4 lg:h-20">
         <a
-          href="#inicio"
-          className="relative z-50 flex min-h-11 items-center"
-          onClick={() => setOpen(false)}
+          href="#conteudo"
+          className="sr-only-focusable absolute top-2 left-2 z-50 rounded-full bg-navy-950 px-4 py-3 text-sm font-semibold text-cream-50"
         >
-          <Logo className="h-10 lg:h-12" />
+          {ui.pularConteudo}
         </a>
 
-        <nav aria-label={ui.navAria} className="hidden lg:block">
-          <ul className="flex items-center gap-1">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  aria-current={active === item.href ? "true" : undefined}
-                  className={cn(
-                    "relative flex min-h-11 items-center px-3 text-[0.9375rem] font-medium transition-colors",
-                    "after:absolute after:inset-x-3 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-gold-500 after:transition-transform after:duration-500",
-                    active === item.href
-                      ? "text-navy-950 after:scale-x-100"
-                      : "text-ink-600 hover:text-navy-950 hover:after:scale-x-100",
-                  )}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="relative z-50 flex items-center gap-2">
-          <WhatsAppButton msg={MSG.avaliacao} origem="header" size="sm">
-            {ui.agendar}
-          </WhatsAppButton>
-          <button
-            ref={toggle}
-            type="button"
-            className="flex size-11 items-center justify-center rounded-full text-navy-950 hover:bg-cream-100 lg:hidden"
-            aria-expanded={open}
-            aria-controls="menu-mobile"
-            aria-label={open ? ui.menuFechar : ui.menuAbrir}
-            onClick={() => setOpen((v) => !v)}
+        <div className="container-site flex h-16 items-center justify-between gap-4 lg:h-20">
+          <a
+            href="#inicio"
+            className="relative z-50 flex min-h-11 items-center"
+            onClick={() => setOpen(false)}
           >
-            {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
+            <Logo className="h-10 lg:h-12" />
+          </a>
 
+          <nav aria-label={ui.navAria} className="hidden lg:block">
+            <ul className="flex items-center gap-1">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    aria-current={active === item.href ? "true" : undefined}
+                    className={cn(
+                      "relative flex min-h-11 items-center px-3 text-[0.9375rem] font-medium transition-colors",
+                      "after:absolute after:inset-x-3 after:bottom-2 after:h-px after:origin-left after:scale-x-0 after:bg-gold-500 after:transition-transform after:duration-500",
+                      active === item.href
+                        ? "text-navy-950 after:scale-x-100"
+                        : "text-ink-600 hover:text-navy-950 hover:after:scale-x-100",
+                    )}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="relative z-50 flex items-center gap-2">
+            <WhatsAppButton msg={MSG.avaliacao} origem="header" size="sm">
+              {ui.agendar}
+            </WhatsAppButton>
+            <button
+              ref={toggle}
+              type="button"
+              className="flex size-11 items-center justify-center rounded-full text-navy-950 hover:bg-cream-100 lg:hidden"
+              aria-expanded={open}
+              aria-controls="menu-mobile"
+              aria-label={open ? ui.menuFechar : ui.menuAbrir}
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Fora do <header>: o backdrop-blur dele vira bloco de contenção e prenderia o overlay `fixed` */}
       <div
         ref={overlay}
         id="menu-mobile"
@@ -203,6 +206,6 @@ export function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   );
 }

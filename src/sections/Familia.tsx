@@ -11,28 +11,31 @@ export function Familia() {
   const track = useRef<HTMLUListElement>(null);
   const [atual, setAtual] = useState(0);
 
-  // indicador do carrossel (mobile): card mais visível
+  // indicador do carrossel (mobile/tablet): card alinhado à esquerda; no fim da rolagem, o último
   useEffect(() => {
     const el = track.current;
     if (!el) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting)
-            setAtual(Number((e.target as HTMLElement).dataset.index));
-        }
-      },
-      { root: el, threshold: 0.6 },
-    );
-    el.querySelectorAll("li").forEach((li) => io.observe(li));
-    return () => io.disconnect();
+    const onScroll = () => {
+      const [a, b] = el.children as HTMLCollectionOf<HTMLElement>;
+      if (!a || !b) return;
+      const fim = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+      const passo = b.offsetLeft - a.offsetLeft;
+      setAtual(
+        fim ? el.children.length - 1 : Math.round(el.scrollLeft / passo),
+      );
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  // rola só o carrossel (scrollIntoView também moveria a página na vertical)
   const irPara = (i: number) => {
-    track.current?.children[i]?.scrollIntoView({
+    const el = track.current;
+    const li = el?.children[i] as HTMLElement | undefined;
+    if (!el || !li) return;
+    el.scrollTo({
+      left: li.offsetLeft - parseFloat(getComputedStyle(el).paddingLeft),
       behavior: prefersReducedMotion() ? "auto" : "smooth",
-      block: "nearest",
-      inline: "center",
     });
   };
 
@@ -51,22 +54,22 @@ export function Familia() {
       </div>
 
       <div className="container-site mt-14 lg:pb-10">
-        <Reveal
-          as="ul"
-          stagger={0.12}
-          // mobile: carrossel com scroll-snap; desktop: 3 colunas, a do meio 40px abaixo
-          className="-mx-5 flex snap-x snap-mandatory scroll-px-5 [scrollbar-width:none] gap-5 overflow-x-auto px-5 pb-4 md:-mx-8 md:scroll-px-8 md:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
+        <ul
+          ref={track}
+          // mobile/tablet: carrossel com scroll-snap; desktop: 3 colunas, a do meio 40px abaixo
+          className="relative -mx-5 flex snap-x snap-mandatory scroll-px-5 [scrollbar-width:none] gap-5 overflow-x-auto px-5 pb-4 md:-mx-8 md:scroll-px-8 md:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
         >
           {familia.map((p, i) => (
             <li
               key={p.nome}
               data-index={i}
               className={cn(
-                "w-[82%] shrink-0 snap-center sm:w-[55%] lg:w-auto",
-                i === 1 && "lg:translate-y-10",
+                "w-[82%] shrink-0 snap-start sm:w-[55%] md:w-[44%] lg:w-auto",
+                // margem em vez de translate: não disputa o transform com animações GSAP
+                i === 1 && "lg:mt-10",
               )}
             >
-              <article>
+              <Reveal as="article" delay={i * 0.12}>
                 <Photo
                   srcs={[p.foto]}
                   alt={p.nome}
@@ -93,10 +96,10 @@ export function Familia() {
                     <span className="sr-only">{ui.abreEmNovaAba}</span>
                   </a>
                 )}
-              </article>
+              </Reveal>
             </li>
           ))}
-        </Reveal>
+        </ul>
 
         <div className="mt-4 flex justify-center gap-1 lg:hidden">
           {familia.map((p, i) => (
